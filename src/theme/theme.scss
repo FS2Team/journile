@@ -1,6 +1,7 @@
 $themes: (
   light: (
     primaryBgColor: #ffffff,
+    primaryBgPingActiveColor: #ffffff,
     primaryBgActiveColor: #eff4f0,
     primaryColor: #373c3f,
     secondaryBgColor: #eff4f0,
@@ -26,6 +27,7 @@ $themes: (
   ),
   dark: (
     primaryBgColor: #262c34,
+    primaryBgPingActiveColor: #20252c,
     primaryBgActiveColor: #20252c,
     primaryColor: #ffffff,
     secondaryBgColor: #262c34,

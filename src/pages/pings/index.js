@@ -16,7 +16,7 @@ class PingsPage extends React.Component<any, State> {
 
   render() {
     return (
-      <div className="pings-page">
+      <div className="pings-page page">
         <div className="layout-main">
           <PingsBar />
           <PingsContent />
