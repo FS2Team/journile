@@ -25,6 +25,7 @@ import Profile from './pages/profile';
 import Wallet from './pages/wallet';
 import Settings from './pages/settings';
 import AuthModal from './pages/auth';
+import PingsPage from './pages/pings';
 import {
   qGetCategories,
   qGetCountries,
@@ -157,12 +158,12 @@ class App extends React.Component<any, State> {
                   <Route exact path='/profile/:username' component={Profile}/>
                   <Route exact path='/wallet' component={Wallet}/>
                   <Route exact path='/settings' component={Settings}/>
+                  <Route exact path='/pings' component={PingsPage}/>
                 </Switch>
               </div>
             </div>
             <PostModal />
             <NotificationManager />
-            
             {/* for svg gradient */}
             <svg style={{width:0,height:0,position:'absolute'}} aria-hidden='true' focusable='false'>
               <linearGradient id='svg-gradient-primary' x1='0' y1='1' x2='1' y2='0'>
