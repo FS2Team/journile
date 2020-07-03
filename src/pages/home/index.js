@@ -57,6 +57,14 @@ class Home extends React.Component<any, State> {
     }
   }
 
+  resetPosts() {
+    this.setState({
+      posts: [],
+      hasMorePosts: true,
+      loadPosts: true,
+    })
+  }
+
   loadMorePosts = () => {
     if (!this.state.loadPosts) {
       this.setState({
@@ -78,6 +86,8 @@ class Home extends React.Component<any, State> {
                 <span className='title'>{post.title}</span>
               </div>
             ))
+          } else {
+            return <div></div>
           }
         }}
       </Query>
@@ -113,7 +123,7 @@ class Home extends React.Component<any, State> {
     const { posts } = this.state
 
     return (
-      <Query query={qGetPosts} variables={{date: posts.length > 0? posts[posts.length-1].original_post_date: null, isLater: false}}>
+      <Query query={qGetPosts} variables={{date: posts.length > 0? posts[posts.length-1].original_post_date: null, isLater: false}} fetchPolicy='no-cache'>
         {({ loading, error, data }) => {
           if (loading) return (<Spinner />)
           if (error) return <div></div>

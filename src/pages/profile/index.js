@@ -104,6 +104,10 @@ class Profile extends React.Component<any, State> {
     
     const user: ?User = this.props.user.getUserByUsername;
     const activity = this.props.activity.getUserActivity;
+
+    console.log('===user', user);
+    console.log('===activity', activity);
+
     if (!user || !activity) {
       return (
         <div className='not-found'>

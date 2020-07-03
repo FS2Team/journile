@@ -16,4 +16,5 @@ export const PostModalType = {
   Profile: 0,
   Share: 1,
   More: 2,
+  ContentOptions: 3,
 }

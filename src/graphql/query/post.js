@@ -1,6 +1,36 @@
 /* @flow */
 
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
+
+export const qGetPostComments = gql`
+  query GetPostComments {
+    getPostComments(post_id: 45) {
+      id
+      post {
+        id
+        title
+        description
+        cover_image
+        type
+        original_url
+        original_post_date
+        gammatags
+        language
+      }
+      user {
+        id
+        username
+        first_name
+        last_name
+        email
+        photo
+        cover_image
+      }
+      content
+      reply_id
+    }
+  }
+`;
 
 export const qGetPosts = gql`
   query GetPosts($date: DateTime, $isLater: Boolean) {
@@ -39,7 +69,7 @@ export const qGetPosts = gql`
       language
       media {
         images
-        videos{
+        videos {
           url
           thumb_url
         }
@@ -55,6 +85,52 @@ export const qGetPosts = gql`
       bookmark
       hidden
       report
+    }
+  }
+`;
+
+export const qGetBookMarkUser = gql`
+  query getBookmarks {
+    getBookmarks {
+      id
+      post {
+        id
+        title
+        description
+        cover_image
+        type
+        original_url
+        original_post_date
+        channel {
+          id
+          name
+          username
+          email
+          logo
+          cover_image
+        }
+        author {
+          id
+          username
+          first_name
+          last_name
+          email
+          photo
+          cover_image
+        }
+        gammatags
+        reissued_id
+        language
+      }
+      user {
+        id
+        username
+        first_name
+        last_name
+        email
+        photo
+        cover_image
+      }
     }
   }
 `;
@@ -96,7 +172,7 @@ export const qGetHotTopics = gql`
       language
       media {
         images
-        videos{
+        videos {
           url
           thumb_url
         }
@@ -149,7 +225,7 @@ export const qGetUserPosts = gql`
       language
       media {
         images
-        videos{
+        videos {
           url
           thumb_url
         }
@@ -206,7 +282,7 @@ export const qGetChannelPosts = gql`
       language
       media {
         images
-        videos{
+        videos {
           url
           thumb_url
         }
@@ -263,7 +339,7 @@ export const qSearchArticles = gql`
       language
       media {
         images
-        videos{
+        videos {
           url
           thumb_url
         }
@@ -320,7 +396,7 @@ export const qSearchPhotos = gql`
       language
       media {
         images
-        videos{
+        videos {
           url
           thumb_url
         }
@@ -377,7 +453,7 @@ export const qSearchVideos = gql`
       language
       media {
         images
-        videos{
+        videos {
           url
           thumb_url
         }
@@ -434,7 +510,7 @@ export const qSearchLives = gql`
       language
       media {
         images
-        videos{
+        videos {
           url
           thumb_url
         }

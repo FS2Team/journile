@@ -20,12 +20,16 @@ import Home from './pages/home';
 import Channels from './pages/channels';
 import Channel from './pages/channel';
 import Explore from './pages/explore';
-import Notification from './pages/notification';
+import Notifications from './pages/notifications';
 import Profile from './pages/profile';
+import EditProfile from './pages/profile-edit';
+import ContentEdit from './pages/content-edit';
 import Wallet from './pages/wallet';
+import Bookmark from './pages/bookmark';
 import Settings from './pages/settings';
 import AuthModal from './pages/auth';
-import PingsPage from './pages/pings';
+import Comment from './pages/comment';
+import PingsPage from './pages/pings'
 import {
   qGetCategories,
   qGetCountries,
@@ -39,6 +43,7 @@ import {
   setLanguages,
   setUserSetting,
   setBlockedUsers,
+  setMutedUsers,
 } from './redux/actions';
 import './App.scss';
 
@@ -150,20 +155,25 @@ class App extends React.Component<any, State> {
                 <Switch>
                   <Route exact path='/' component={Home}/>
                   <Route exact path='/channels' component={Channels}/>
+                  <Route exact path='/pings' component={PingsPage}/>
                   <Route exact path='/channels/:username' component={Channel}/>
                   <Route exact path='/explore' component={Explore}/>
                   <Route exact path='/explore/:category' component={Explore}/>
-                  <Route exact path='/notification' component={Notification}/>
+                  <Route exact path='/notifications' component={Notifications}/>
                   <Route exact path='/profile' component={Profile}/>
                   <Route exact path='/profile/:username' component={Profile}/>
+                  <Route exact path='/profile/:username/edit' component={EditProfile}/>
                   <Route exact path='/wallet' component={Wallet}/>
                   <Route exact path='/settings' component={Settings}/>
-                  <Route exact path='/pings' component={PingsPage}/>
+                  <Route exact path='/bookmark' component={Bookmark}/>
+                  <Route exact path='/post/:postId/edit' component={ContentEdit}/>
+                  <Route exact path='/comment/:postId' component={Comment}/>
                 </Switch>
               </div>
             </div>
             <PostModal />
             <NotificationManager />
+            
             {/* for svg gradient */}
             <svg style={{width:0,height:0,position:'absolute'}} aria-hidden='true' focusable='false'>
               <linearGradient id='svg-gradient-primary' x1='0' y1='1' x2='1' y2='0'>
@@ -192,4 +202,4 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default connect(mapStateToProps, { setCategories, setCountries, setLanguages, setUserSetting, setBlockedUsers, })(App);
+export default connect(mapStateToProps, { setCategories, setCountries, setLanguages, setUserSetting, setBlockedUsers, setMutedUsers, })(App);

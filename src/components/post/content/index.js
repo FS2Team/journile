@@ -1,6 +1,8 @@
 /* @flow */
 
 import React from 'react';
+import { get } from "lodash"
+import { Link } from 'react-router-dom';
 
 import Icon from '../../icon';
 import Tools from '../tools';
@@ -54,6 +56,7 @@ export default class Content extends React.Component<Props, State> {
     } = this.props;
 
     const {
+      id,
       title,
       description,
       original_url,
@@ -82,9 +85,11 @@ export default class Content extends React.Component<Props, State> {
           </div>
           <div className='d-flex align-items-end'>
             <div className='comments'>
-              <Icon className='icon' name='comment_send' size={24} />
+              <Link to={`/comment/${id}`}>
+                <Icon className='icon' name='comment_send' size={24} />
+              </Link>
               <Icon className='icon' name='arrow_down' size={24} />
-              <span className='text'>{reply.count}</span>
+              <span className='text'>{get(reply, "count")}</span>
             </div>
           </div>
         </div>

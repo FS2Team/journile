@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import ProfileModal from './profile';
 import ShareModal from './share';
 import ActionModal from './action';
+import ContentOptions from './contentOptions';
 import {
   closePostModal,
 } from '../../redux/actions';
@@ -88,6 +89,9 @@ class PostModal extends React.Component<any, State> {
                 }
                 {modalType === PostModalType.More &&
                   <ActionModal post={post} />
+                }
+                {modalType === PostModalType.ContentOptions &&
+                  <ContentOptions post={post} />
                 }
               </div>
             </div>
