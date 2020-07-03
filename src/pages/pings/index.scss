@@ -8,21 +8,14 @@
     width: 100%;
     overflow: hidden;
     .pings-bar {
-      // width: 40%;
-      // float: left;
-      // h1 {
-      //   @include themify() {
-      //       color: themed('secondaryColor');
-      //     }
-      // }
     }
     .pings-content {
       width: 60%;
       float: right;
       h1 {
         @include themify() {
-            color: themed('secondaryColor');
-          }
+          color: themed("secondaryColor");
+        }
       }
     }
   }

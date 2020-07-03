@@ -1,6 +1,7 @@
 /* @flow */
 
 import React from 'react';
+import { get } from "lodash";
 
 import Header from '../header';
 import Content from '../content';
@@ -20,11 +21,13 @@ export default class PhotoPost extends React.Component<Props, State> {
   }
 
   render() {
-    const {
-      media: {
-        images,
-      },
-    } = this.props.data;
+    // const {
+    //   media: {
+    //     images,
+    //   },
+    // } = this.props.data;
+
+    const images = get(this.props.data, "media.images")
 
     const {
       selectedImage,

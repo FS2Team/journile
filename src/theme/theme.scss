@@ -1,95 +1,98 @@
+
 $themes: (
   light: (
-    primaryBgColor: #ffffff,
-    primaryBgPingActiveColor: #ffffff,
-    primaryBgActiveColor: #eff4f0,
-    primaryColor: #373c3f,
-    secondaryBgColor: #eff4f0,
-    secondaryBgActiveColor: #ffffff,
-    secondaryBgHighlightColor: #f3f3f3,
-    secondaryColor: #a3a7a8,
+    primaryBgColor: #FFFFFF,
+    primaryBgActiveColor: #EFF4F0,
+    primaryColor: #373C3F,
+    secondaryBgColor: #EFF4F0,
+    secondaryBgActiveColor: #FFFFFF,
+    secondaryBgHighlightColor: #F3F3F3,
+    secondaryColor: #A3A7A8,
+
     successColor: #155724,
-    successBgColor: #d4edda,
-    successBorderColor: #c3e6cb,
-    dangerColor: #721c24,
-    dangerBgColor: #f8d7da,
-    dangerBorderColor: #f5c6cb,
+    successBgColor: #D4EDDA,
+    successBorderColor: #C3E6CB,
+    dangerColor: #721C24,
+    dangerBgColor: #F8D7DA,
+    dangerBorderColor: #F5C6CB,
     warnColor: #856404,
-    warnBgColor: #fff3cd,
-    warnBorderColor: #ffeeba,
-    inputboxBgColor: #eff4f0,
-    inputboxTextColor: #a3a7a8,
-    inputboxBorderColor: #868a8d,
-    receiveMsgBgColor: #95d8eb,
-    sendMsgBgColor: #8bd9c7,
-    myMessageboxBgColor: #8bd9c77a,
-    othersMessageboxBgColor: #95d8eb7a
+    warnBgColor: #FFF3CD,
+    warnBorderColor: #FFEEBA,
+    
+    inputboxBgColor: #EFF4F0,
+    inputboxTextColor: #A3A7A8,
+    inputboxBorderColor: #868A8D,
+    receiveMsgBgColor: #95D8EB,
+    sendMsgBgColor: #8BD9C7,
+    
+    myMessageboxBgColor: #8BD9C77A,
+    othersMessageboxBgColor: #95D8EB7A,
   ),
   dark: (
-    primaryBgColor: #262c34,
-    primaryBgPingActiveColor: #20252c,
-    primaryBgActiveColor: #20252c,
-    primaryColor: #ffffff,
-    secondaryBgColor: #262c34,
-    secondaryBgActiveColor: #20252c,
-    secondaryBgHighlightColor: #1b1f25,
-    secondaryColor: #bdbdbd,
-    successColor: #d4edda,
+    primaryBgColor: #262C34,
+    primaryBgActiveColor: #20252C,
+    primaryColor: #FFFFFF,
+    secondaryBgColor: #262C34,
+    secondaryBgActiveColor: #20252C,
+    secondaryBgHighlightColor: #1B1F25,
+    secondaryColor: #BDBDBD,
+
+    successColor: #D4EDDA,
     successBgColor: #155724,
     successBorderColor: #045015,
-    dangerColor: #f8d7da,
-    dangerBgColor: #721c24,
-    dangerBorderColor: #6f0b15,
-    warnColor: #fff3cd,
+    dangerColor: #F8D7DA,
+    dangerBgColor: #721C24,
+    dangerBorderColor: #6F0B15,
+    warnColor: #FFF3CD,
     warnBgColor: #856404,
     warnBorderColor: #856917,
-    inputboxBgColor: #1b1f25,
-    inputboxTextColor: #ffffff,
-    inputboxBorderColor: #ffffff,
-    receiveMsgBgColor: #95d8eb,
-    sendMsgBgColor: #8bd9c7,
-    myMessageboxBgColor: #8bd9c77a,
-    othersMessageboxBgColor: #95d8eb7a
-  )
+    
+    inputboxBgColor: #1B1F25,
+    inputboxTextColor: #FFFFFF,
+    inputboxBorderColor: #FFFFFF,
+    receiveMsgBgColor: #95D8EB,
+    sendMsgBgColor: #8BD9C7,
+    
+    myMessageboxBgColor: #8BD9C77A,
+    othersMessageboxBgColor: #95D8EB7A,
+  ),
 );
 
-$colors: (
-  blueColor: #1592e5,
+$colors : (
+  blueColor: #1592E5,
   blackColor: #000000,
-  lightBlueColor: #3eccfa,
-  greenColor: #00d331,
-  greyColor: #a9a9a9,
-  darkGreyColor: #262c34,
-  pinkColor: #f75995,
-  darkPinkColor: #8441a4,
-  redColor: #d60000,
-  whiteColor: #ffffff,
-  yellowColor: #f2c52e,
-  primaryGradientStartColor: #6454f0,
-  primaryGradientEndColor: #6ee2f5,
-  secondaryGradientStartColor: #8441a4,
-  secondaryGradientEndColor: #ff5b94,
-  greyGradientStartColor: #6b6b6b,
-  greyGradientEndColor: #cfcfcf
+  lightBlueColor: #3ECCFA,
+  greenColor: #00D331,
+  greyColor: #A9A9A9,
+  darkGreyColor: #262C34,
+  pinkColor: #F75995,
+  darkPinkColor: #8441A4,
+  redColor: #D60000,
+  whiteColor: #FFFFFF,
+  yellowColor: #F2C52E,
+  
+  primaryGradientStartColor: #6454F0,
+  primaryGradientEndColor: #6EE2F5,
+  secondaryGradientStartColor: #8441A4,
+  secondaryGradientEndColor: #FF5B94,
+  greyGradientStartColor: #6B6B6B,
+  greyGradientEndColor: #CFCFCF,
 );
 
 @mixin themify() {
   @each $theme, $map in $themes {
+
     .#{$theme} & {
       $theme-map: () !global;
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), $key);
-        $theme-map: map-merge(
-          $theme-map,
-          (
-            $key: $value
-          )
-        ) !global;
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
       }
 
       @content;
       $theme-map: null !global;
     }
+
   }
 }
 
@@ -102,5 +105,5 @@ $colors: (
 }
 
 @function color($key) {
-  @return map-get($colors, "#{$key}Color");
+  @return map-get($colors, '#{$key}Color');
 }

@@ -37,7 +37,7 @@ class Tools extends React.Component<any, State> {
     return {
       isLoggedin: props.isLoggedin,
       me: props.me,
-      like: state.like === -1? props.post.rate.status: state.like,
+      like: state.like === -1 ? _.get(props.post, "rate.status") : state.like,
     }
   }
 
@@ -52,7 +52,7 @@ class Tools extends React.Component<any, State> {
       client,
       post,
     } = this.props;
-    
+
     if (!client) return;
 
     await client.mutate({
@@ -79,15 +79,15 @@ class Tools extends React.Component<any, State> {
       return;
     }
 
-    const newRate = like === 1? 0: 1;
-    
-    try{
+    const newRate = like === 1 ? 0 : 1;
+
+    try {
       await this.ratePost(newRate);
 
       if (like === 2) {
         post.rate.dislike -= 1;
       }
-      post.rate.like += like === 1? -1: 1;
+      post.rate.like += like === 1 ? -1 : 1;
       post.rate.status = newRate;
 
       this.setState({
@@ -115,15 +115,15 @@ class Tools extends React.Component<any, State> {
       return;
     }
 
-    const newRate = like === 2? 0: 2;
-    
-    try{
+    const newRate = like === 2 ? 0 : 2;
+
+    try {
       await this.ratePost(newRate);
 
       if (like === 1) {
         post.rate.like -= 1;
       }
-      post.rate.dislike += like === 2? -1: 1;
+      post.rate.dislike += like === 2 ? -1 : 1;
       post.rate.status = newRate;
 
       this.setState({
@@ -150,9 +150,9 @@ class Tools extends React.Component<any, State> {
         <Icon className='icon' name='share' size={24} onClick={this.openShareModal} />
         <Icon className='icon' name='dollar_fill' size={24} />
         <div className=''>
-          <Icon className='icon' name={like === 1? 'heart_fill': 'heart_outline'} size={24} onClick={this.toggleThumbup} />
-          <span className='rate-count'>{rate.like - rate.dislike}</span>
-          <Icon className='icon' name={like === 2? 'thumb_down': 'thumb_down_outline'} size={24} onClick={this.toggleThumbdown} />
+          <Icon className='icon' name={like === 1 ? 'heart_fill' : 'heart_outline'} size={24} onClick={this.toggleThumbup} />
+          <span className='rate-count'>{_.get(rate, "like", 0) - _.get(rate, "dislike", 0)}</span>
+          <Icon className='icon' name={like === 2 ? 'thumb_down' : 'thumb_down_outline'} size={24} onClick={this.toggleThumbdown} />
         </div>
         {Gammatags.map((gammatag, index) => (
           <a href={`/explore?q=${gammatag}`} key={index} className='gammatag'>

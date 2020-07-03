@@ -102,7 +102,7 @@ class Composer extends React.Component<any, State> {
     isLoggedin: false,
     me: null,
 
-    ...this.defaultState,
+    ...this.props.defaultValues ? this.props.defaultValues : this.defaultState,
   }
 
   hasCameraDevice: boolean = false;

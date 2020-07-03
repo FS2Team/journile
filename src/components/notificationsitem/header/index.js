@@ -3,6 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Mutation } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
 import Icon from '../../icon';
 import Profile from './profile';
@@ -11,7 +12,6 @@ import {
 } from '../../../graphql/mutation';
 import {
   openPostModal,
-  toggleAuthModal
 } from '../../../redux/actions';
 import {
   PostModalType,
@@ -32,14 +32,14 @@ class Header extends React.Component<any, State> {
     me: null,
     bookmark: -1,
   }
-
+  
   wrapper: ?HTMLDivElement = null;
 
   static getDerivedStateFromProps(props: any, state: State) {
     return {
       isLoggedin: props.isLoggedin,
       me: props.me,
-      bookmark: state.bookmark === -1 ? props.post.bookmark : state.bookmark,
+      bookmark: state.bookmark === -1? props.post.bookmark: state.bookmark,
     }
   }
 
@@ -75,10 +75,7 @@ class Header extends React.Component<any, State> {
   }
 
   openMenu = () => {
-    const { author } = this.props.post;
-    const { me } = this.state;
-    const modalType = me && author && me.id === author.id ? PostModalType.ContentOptions : PostModalType.More;
-    this.props.openPostModal(this.props.post, modalType, this.wrapper);
+    this.props.openPostModal(this.props.post, PostModalType.More, this.wrapper);
   }
 
   render() {
@@ -90,21 +87,15 @@ class Header extends React.Component<any, State> {
 
     const {
       bookmark,
-      isLoggedin,
     } = this.state;
 
     return (
       <div className='post-header' ref={wrapper => this.wrapper = wrapper}>
-        <Profile author={author} channel={channel} onClick={this.openProfileModal} />
+        <Profile author={author} post={this.props.post} channel={channel} onClick={this.openProfileModal} />
         <div className='post-info'>
-          <span className='category'>{category && category.name}</span>
-          <Mutation mutation={mBookmarkPost}>
-            {(bookmarkMutation, { loading }) => (
-              <Icon className='icon' name={bookmark === 1 ? 'bookmark_fill' : 'bookmark_outline'} size={24}
-                onClick={() => this.toggleBookmark(bookmarkMutation)} />
-            )}
-          </Mutation>
-          {isLoggedin && <Icon className='icon' name='more_vertical' size={24} onClick={this.openMenu} />}
+          <Link className='category'>Views Memo</Link>
+          <span className='date-time'>11:43am, July 1, 2018</span>
+          <Icon className='icon' name='more_vertical' size={24} onClick={this.openMenu} />
         </div>
       </div>
     )
@@ -118,4 +109,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { openPostModal, toggleAuthModal })(Header);
+export default connect(mapStateToProps, { openPostModal })(Header);

@@ -1,13 +1,14 @@
 /* @flow */
 
 import React from 'react';
-import { Mutation } from 'react-apollo';
+// import { Mutation } from 'react-apollo';
 import { connect } from 'react-redux';
 
 import Icon from '../../components/icon';
 import Toggle from '../../components/form/toggle';
 import Menu from './menu';
 import LanguageBoard from './languageboard';
+import BlockBoard from './blockboard';
 import {
   changeTheme,
 } from '../../redux/actions';
@@ -77,6 +78,8 @@ type State = {
   content_only_pro: boolean,
   famliy_safe: boolean,
   theme: string,
+  
+  blockedUsers: Array<any>,
 
   selectedMenu: number,
   searchKey: string,
@@ -105,14 +108,15 @@ class Settings extends React.Component<any, State> {
     // theme: 'dark',
     ...this.props.settings,
 
+    blockedUsers: this.props.blockedUsers,
+
     selectedMenu: -1,
     searchKey: '',
-  } 
+  }
 
   static getDerivedStateFromProps(props: any, state: State) {
     return {
       isLoggedin: props.isLoggedin,
-      // ...props.settings,
       theme: props.theme,
     }
   }
@@ -162,7 +166,7 @@ class Settings extends React.Component<any, State> {
     const {
       isLoggedin,
 
-      paypal_address,
+      // paypal_address,
       show_balance_in_wallet,
       reader_tag_photo,
       all_tag_photo,
@@ -404,6 +408,9 @@ class Settings extends React.Component<any, State> {
           {selectedMenu === MenuIndex.Language &&
             <LanguageBoard languages={this.props.languages} current={language} onChange={this.changeLanguage} />
           }
+          {selectedMenu === MenuIndex.BlockedAccounts &&
+            <BlockBoard languages={this.props.blockedUsers} />
+          }
         </div>
       </div>
     )
@@ -415,6 +422,8 @@ function mapStateToProps(state) {
     isLoggedin: state.auth.loggedin,
     settings: state.auth.settings,
     languages: state.common.languages,
+    blockedUsers: state.auth.blockedUsers,
+    mutedUsers: state.auth.mutedUsers,
     theme: state.theme.type,
   }
 }
