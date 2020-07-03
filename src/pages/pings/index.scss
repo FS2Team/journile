@@ -7,7 +7,7 @@
     width: 100%;
     overflow: hidden;
     .pings-bar {
-      width: 40%;
+      width: 35%;
       float: left;
       h1 {
         @include themify() {
@@ -16,8 +16,11 @@
       }
     }
     .pings-content {
-      width: 60%;
+      width: 65%;
       float: right;
+      @include themify() {
+        color: themed('secondaryColor');
+      } 
       h1 {
         @include themify() {
             color: themed('secondaryColor');
