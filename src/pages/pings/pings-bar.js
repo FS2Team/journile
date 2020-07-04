@@ -13,9 +13,8 @@ import user4 from "../../resources/image/pings/profile4.svg";
 import Verified from "../../resources/image/pings/Verified.svg";
 import Verified1 from "../../resources/image/pings/Verified1.svg";
 import activePing from "../../resources/image/pings/active-ping.svg";
-import {
-  changeTheme,
-} from '../../redux/actions';
+import partner from "../../resources/image/pings/partner.svg";
+import { changeTheme, } from '../../redux/actions';
 type State = {
   theme: string,
 };
@@ -56,7 +55,7 @@ class PingsBar extends React.Component<any, State> {
               <img src={user} alt="user" />
               <img
                 className="verified"
-                src={theme ? Verified1 : Verified}
+                src={theme === 'dark' ? Verified1 : Verified}
                 alt="verified"
               />
             </div>
@@ -80,7 +79,7 @@ class PingsBar extends React.Component<any, State> {
               <img src={user1} alt="user" />
               <img
                 className="verified"
-                src={theme ? Verified1 : Verified}
+                src={theme === 'dark' ? Verified1 : Verified}
                 alt="verified"
               />
             </div>
@@ -104,7 +103,7 @@ class PingsBar extends React.Component<any, State> {
               <img src={user2} alt="user" />
               <img
                 className="verified"
-                src={theme ? Verified1 : Verified}
+                src={theme === 'dark' ? Verified1 : Verified}
                 alt="verified"
               />
             </div>
@@ -128,7 +127,7 @@ class PingsBar extends React.Component<any, State> {
               <img src={user3} alt="user" />
               <img
                 className="verified"
-                src={theme ? Verified1 : Verified}
+                src={theme === 'dark' ? Verified1 : Verified}
                 alt="verified"
               />
             </div>
@@ -148,7 +147,7 @@ class PingsBar extends React.Component<any, State> {
               <img src={user4} alt="user" />
               <img
                 className="verified"
-                src={theme ? Verified1 : Verified}
+                src={theme === 'dark' ? Verified1 : Verified}
                 alt="verified"
               />
             </div>
@@ -165,6 +164,23 @@ class PingsBar extends React.Component<any, State> {
             <span>3 Unread Ping</span>
           </div>
         </div>
+
+        <div className="ping-item group active">
+          <div className="ping-active"></div>
+          <div className="ping-info">
+            <div className="avatar">
+              <img className="group-icon" src={partner} alt="group" />
+            </div>
+            <div className="message">
+              <p>
+                <b className="username">Group Chat</b>
+                <span className="inactive">19 Members</span>
+              </p>
+              <p>Lorem ipsum dolor sit amet Consectetur…</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }
