@@ -3,52 +3,85 @@
 import React from 'react'
 import './ping-messages.scss'
 import _ from 'lodash';
-import Composer from '../../components/composer';
+import Avatar from '../../components/avatar';
+import AvtImg from '../../resources/image/avatar.png'
 
-
-const SortMethod = {
-  Latest: 0,
-  Category: 1,
-}
 
 type State = {
-  isLoggedin: boolean,
-  blockedUsers: Array<any>,
-  mutedUsers: Array<any>,
-  posts: Array<any>,
-  hasMorePosts: boolean,
-  loadPosts: boolean,
-  sortMethod: number,
+
 };
 
 class PingMessages extends React.Component<any, State> {
   state = {
-    isLoggedin: false,
-    blockedUsers: [],
-    mutedUsers: [],
-    posts: [],
-    hasMorePosts: true,
-    loadPosts: true,
-    sortMethod: SortMethod.Latest,
+
   }
 
   render() {
     const {
-      isLoggedin,
-      blockedUsers,
-      mutedUsers,
-      posts,
-      hasMorePosts,
-      loadPosts,
-      sortMethod,
+
     } = this.state;
 
     return (
       <div className="ping-messages">
         <div className="msg-content">
-          PingMessages
+          <div className="line-msg msg">
+            <Avatar src={AvtImg} />
+            <div className="info">
+              <p className='text'>Lorem ipsum dolor sit amet Consectetur…</p>
+              <p className="dtime">10:15</p>
+            </div>
+          </div>
+          <div className="line-msg reply">
+            <div className="info">
+              <p className="text">Lorem ipsum dolor sit amet Consectetur…</p>
+              <p className="dtime">14:21</p>
+            </div>
+          </div>
+          <div className="line-msg msg">
+            <Avatar src={AvtImg} />
+            <div className="info">
+              <p className='text'>Lorem ipsum dolor sit amet Consectetur…</p>
+              <p className="dtime">15:21</p>
+            </div>
+          </div>
+          <div className="line-msg reply">
+            <div className="info">
+              <p className="text">Lorem ipsum </p>
+              <p className="dtime">18:24</p>
+            </div>
+          </div>
+          <div className="line-msg reply">
+            <div className="info">
+              <p className="text">Lorem ipsum </p>
+              <p className="dtime">18:24</p>
+            </div>
+          </div>
+          <div className="line-msg reply">
+            <div className="info">
+              <p className="text">Lorem ipsum dolor sit amet Consectetur…</p>
+              <p className="dtime">19:21</p>
+            </div>
+          </div>
+          <div className="line-msg reply">
+            <div className="info">
+              <p className="text">Lorem ipsum </p>
+              <p className="dtime">20:24</p>
+            </div>
+          </div>
+          <div className="line-msg reply">
+            <div className="info">
+              <p className="text">Lorem ipsum dolor sit amet Consectetur…</p>
+              <p className="dtime">20:35</p>
+            </div>
+          </div>
+          <div className="line-msg msg">
+            <Avatar src={AvtImg} />
+            <div className="info">
+              <p className='text'>Lorem ipsum dolor sit amet Consectetur…</p>
+              <p className="dtime">20:56</p>
+            </div>
+          </div>
         </div>
-        <Composer onIssue={post => this.setState({ posts: _.concat([post], posts) })} />
       </div>
     )
   }

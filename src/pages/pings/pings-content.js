@@ -6,6 +6,7 @@ import AvtImg from '../../resources/image/avatar.png'
 import Icon from '../../components/icon'
 import Avatar from '../../components/avatar'
 import PingMessages from './ping-messages'
+import TypeMessage from '../../components/type-message'
 
 type State = {}
 
@@ -29,7 +30,9 @@ class PingsContent extends React.Component<any, State>{
             </div>
           </div>
           <div className="actions-call">
-            <Icon name="box-add" className="icon" size={24} />
+            <a href="/#"><Icon name="home" className="icon" size={24} /></a>
+            <a href="/#"><Icon name='camera' className='icon' size={24} /></a>
+            <a href="/#"><Icon name='group' className='icon' size={24} /></a>
           </div>
           <div className="right-options">
             <p>Reading </p>
@@ -37,6 +40,7 @@ class PingsContent extends React.Component<any, State>{
         </div>
 
         <PingMessages />
+        <TypeMessage />
       </div>
     )
   }
