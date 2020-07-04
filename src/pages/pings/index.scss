@@ -8,9 +8,10 @@
     width: 100%;
     overflow: hidden;
     .pings-bar {
+      width: 35%;
     }
     .pings-content {
-      width: 60%;
+      width: 65%;
       float: right;
       h1 {
         @include themify() {

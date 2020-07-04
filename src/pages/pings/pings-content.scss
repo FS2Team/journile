@@ -1,6 +1,7 @@
 @import "../../theme/theme.scss";
 
 .pings-content {
+  position: relative;
   .barContent {
     @include themify() {
       background: themed("secondaryBgHighlightColor");
@@ -53,6 +54,20 @@
     }
     .actions-call {
       width: 30%;
+      text-align: center;
+      a {
+        display: inline-block;
+        padding: 5px;
+        margin: 0 10px;
+        @include themify() {
+          color: themed("secondaryColor");
+        }
+        svg {
+          @include themify() {
+            fill: themed("secondaryColor");
+          }
+        }
+      }
     }
     .right-options {
       width: 30%;
